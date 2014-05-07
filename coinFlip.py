@@ -1,18 +1,23 @@
 import random
 import csv
 
-def flip(count=10):
+def flip(count=10, heads=False):
     i = 0
+    output = []
     while i < count:
-        print random.choice([1,-1])
+        if heads == False:
+            output.append(random.choice([10,-10]))
+        else:
+            output.append(random.choice(['Heads','Tails']))
         i += 1
+    return output
 
 def flipaverage(count=100):
     i = 1
-    t = float(random.choice([1,-1]))
+    t = float(random.choice([10,-10]))
     print t
     while i < count:
-        f = random.choice([1,-1])
+        f = random.choice([10,-10])
         i += 1
         t += f
         a = t/i
@@ -29,9 +34,5 @@ def flipcount(count=10000):
             pos += 1
         else:
             neg += 1
-    return " 1:", float(pos)/(pos + neg) * 100, "%"
-    return "-1:", float(neg)/(pos + neg) * 100, "%"
-
-
-
-    
+    print "heads:", float(pos)/(pos + neg) * 100, "%"
+    print "tails:", float(neg)/(pos + neg) * 100, "%"
