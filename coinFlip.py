@@ -42,6 +42,7 @@ def writeflipaverage(flips=10, count=10):
     i = 1
     c = 0
     header = []
+    header.append('countXflip')
     while c < flips:
         c += 1
         header.append('flip' + str(c))
@@ -49,6 +50,7 @@ def writeflipaverage(flips=10, count=10):
     while i <= count:
         j = 1
         out = []
+        out.append('count' + str(i))
         t = float(random.choice([1,-1]))
         out.append(t)
         while j < flips:
