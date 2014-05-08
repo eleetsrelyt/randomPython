@@ -1,5 +1,6 @@
 import random
-import csv
+import os
+##import csv
 
 def flip(count=10, heads=False):
     i = 0
@@ -38,7 +39,9 @@ def flipcount(count=10000):
     print "tails:", float(neg)/(pos + neg) * 100, "%"
 
 def writeflipaverage(flips=10, count=10):
-    o = open(str(flips) + ' flips x ' + str(count) + 'coins.csv', 'w')
+    ocsv = str(flips) + ' flips x ' + str(count) + 'coins.csv'
+    otmp = str(flips) + ' flips x ' + str(count) + 'coins.csv.tmp'
+    o = open(ocsv, 'w')
     i = 1
     c = 0
     header = []
@@ -62,4 +65,40 @@ def writeflipaverage(flips=10, count=10):
         o.write(str(out) + '\n')
         i += 1
     o.close()
+    def writereplace(file1,file2,old,new):
+        o1 = open(file1, 'r')
+        o2 = open(file2, 'w')
+        for line in o1:
+            o2.write(line.replace(old,new))
+        o1.close()
+        o2.close()
+    writereplace(ocsv,otmp,' ','')
+    writereplace(otmp,ocsv,'[','')
+    writereplace(ocsv,otmp,']','')
+    writereplace(otmp,ocsv,'\'','')                     
+    ##o1 = open(ocsv, 'r')
+    ##o2 = open(otmp, 'w')
+    ##for line in o1:
+    ##    o2.write(line.replace(' ', ''))
+    ##o1.close()
+    ##o2.close()
+    ##o1 = open(otmp, 'r')
+    ##o2 = open(ocsv, 'w')
+    ##for line in o1:
+    ##    o2.write(line.replace('[', ''))
+    ##o1.close()
+    ##o2.close()
+    ##o1 = open(ocsv, 'r')
+    ##o2 = open(otmp, 'w')
+    ##for line in o1:
+    ##    o2.write(line.replace(']', ''))
+    ##o1.close()
+    ##o2.close()
+    ##o1 = open(otmp, 'r')
+    ##o2 = open(ocsv, 'w')
+    ##for line in o1:
+    ##    o2.write(line.replace('\'', ''))
+    ##o1.close()
+    ##o2.close()
+    os.remove(otmp)
     
