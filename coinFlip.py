@@ -38,11 +38,11 @@ def flipcount(count=10000):
     print "tails:", float(neg)/(pos + neg) * 100, "%"
 
 def writeflipaverage(flips=10, count=10):
-    o = open(str(flips) + ' flips x ' + str(count) + 'count.csv', 'w')
+    o = open(str(flips) + ' flips x ' + str(count) + 'coins.csv', 'w')
     i = 1
     c = 0
     header = []
-    header.append('countXflip')
+    header.append('coinXflip')
     while c < flips:
         c += 1
         header.append('flip' + str(c))
@@ -50,7 +50,7 @@ def writeflipaverage(flips=10, count=10):
     while i <= count:
         j = 1
         out = []
-        out.append('count' + str(i))
+        out.append('coin' + str(i))
         t = float(random.choice([1,-1]))
         out.append(t)
         while j < flips:
